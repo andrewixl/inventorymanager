@@ -1,0 +1,31 @@
+{
+  "routers": {
+    "t1": "Inventory ID",
+    "t2": "Brand",
+    "t3": "Model",
+    "t4": "Speed",
+    "t5": "Expansion",
+    "t6": "Rack Units",
+    "t7": "Status",
+    "t8": "Location"
+  },
+
+  "switches": {
+    "t1": "inventory.company_id",
+    "t2": "inventory.manufacturer",
+    "t3": "inventory.model",
+    "t4": "inventory.speed",
+    "t5": "inventory.ports",
+    "t6": "inventory.poe",
+    "t7": "inventory.rack_units",
+    "t8": "inventory.status",
+    "t9": "inventory.location",
+    "t10": "inventory.serial_number"
+  },
+
+  "accesspoints": {
+    "t1": "Inventory ID",
+    "t2": "Brand",
+    "t3": "Model"
+  }
+}

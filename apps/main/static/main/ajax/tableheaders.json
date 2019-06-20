@@ -1,0 +1,121 @@
+{
+  "routers": {
+    "company_id": "Inventory ID",
+    "manufacturer": "Manufacturer",
+    "model": "Model",
+    "speed": "Speed",
+    "ports": "Ports",
+    "poe": "POE",
+    "rack_units": "Rack Units",
+    "status": "Status",
+    "location": "Location",
+    "serial_number": "Serial Number"
+  },
+
+  "switches": {
+    "company_id": "Inventory ID",
+    "manufacturer": "Manufacturer",
+    "model": "Model",
+    "speed": "Speed",
+    "ports": "Ports",
+    "poe": "POE",
+    "rack_units": "Rack Units",
+    "status": "Status",
+    "location": "Location",
+    "serial_number": "Serial Number"
+  },
+
+  "accesspoints": {
+    "company_id": "Inventory ID",
+    "manufacturer": "Manufacturer",
+    "model": "Model",
+    "status": "Status",
+    "check-out": "Checked Out To",
+    "location": "Location",
+    "serial_number" : "Serial Number"
+  },
+
+  "servers": {
+    "company_id": "Inventory ID",
+    "manufacturer": "Manufacturer",
+    "model": "Model",
+    "status": "Status",
+    "location": "Location",
+    "serial_number" : "Serial Number"
+  },
+
+  "desktops": {
+    "company_id": "Inventory ID",
+    "manufacturer": "Manufacturer",
+    "model": "Model",
+    "status": "Status",
+    "location": "Location",
+    "serial_number" : "Serial Number"
+  },
+
+  "laptops": {
+    "company_id": "Inventory ID",
+    "manufacturer": "Manufacturer",
+    "model": "Model",
+    "status": "Status",
+    "check-out": "Checked Out To",
+    "location": "Location",
+    "serial_number" : "Serial Number"
+  },
+
+  "asas": {
+    "company_id": "Inventory ID",
+    "manufacturer": "Manufacturer",
+    "model": "Model",
+    "speed": "Speed",
+    "ports": "Ports",
+    "poe": "POE",
+    "rack_units": "Rack Units",
+    "status": "Status",
+    "check-out": "Checked Out To",
+    "location": "Location",
+    "serial_number": "Serial Number"
+  },
+
+  "paloaltos": {
+    "company_id": "Inventory ID",
+    "manufacturer": "Manufacturer",
+    "model": "Model",
+    "status": "Status",
+    "check-out": "Checked Out To",
+    "location": "Location",
+    "serial_number" : "Serial Number"
+  },
+
+  "junipers": {
+    "company_id": "Inventory ID",
+    "manufacturer": "Manufacturer",
+    "model": "Model",
+    "status": "Status",
+    "check-out": "Checked Out To",
+    "location": "Location",
+    "serial_number" : "Serial Number"
+  },
+
+  "wirelessadapters": {
+    "company_id": "Inventory ID",
+    "manufacturer": "Manufacturer",
+    "model": "Model",
+    "speed": "Speed",
+    "status": "Status",
+    "check-out": "Checked Out To",
+    "location": "Location",
+    "serial_number" : "Serial Number"
+  },
+
+  "ssd": {
+    "company_id": "Inventory ID",
+    "manufacturer": "Manufacturer",
+    "model": "Model",
+    "size": "Size",
+    "status": "Status",
+    "check-out": "Checked Out To",
+    "location": "Location",
+    "serial_number" : "Serial Number"
+  }
+}
