@@ -7,7 +7,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Dashboard - Find My Inventory</title>
+        <title>{{title}} - {{user.company.company_name}}</title>
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link href="{% static 'main/css/style.default.css' %}" rel="stylesheet">
@@ -21,6 +21,20 @@
         <script src="js/html5shiv.js"></script>
         <script src="js/respond.min.js"></script>
         <![endif]-->
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script> 
+        <script src="http://malsup.github.com/jquery.form.js"></script> 
+ 
+        <!-- <script> 
+            // wait for the DOM to be loaded 
+            $(document).ready(function() { 
+                // bind 'myForm' and provide a simple callback function 
+                $('#myForm').ajaxForm(function() { 
+                    alert("Thank you for your comment!"); 
+                }); 
+            }); 
+        </script>  -->
+
     </head>
 
     <body>
@@ -32,7 +46,7 @@
                         <img src="{% static 'main/images/logo.png' %}" alt="" /> 
                     </a>
                     <div class="pull-right">
-                        <a href="" class="menu-collapse">
+                        <a href="" class="menu-collapse"></a>
                             <i class="fa fa-bars"></i>
                         </a>
                     </div>
@@ -133,22 +147,7 @@
                                 <li><a href=""><i class="fa fa-windows"></i> <span>&nbsp; Office Product Keys</span></a></li>
                             </ul>
                         </li> 
-                        
-                        <li class="parent"><a href=""><i class="fas fa-landmark"></i> <span>Checked Out Inventory</span></a>
-                            <ul class="children">
-                                <li><a href="/checkedout/laptops"><i class="fa fa-laptop"></i> <span>&nbsp; Laptops</span></a></li>
-                                <li><a href="/checkedout/desktops"><i class="fa fa-desktop"></i> <span>&nbsp; Desktops</span></a></li>
-                                <li><a href="/checkedout/servers"><i class="fas fa-server"></i> <span>&nbsp; Servers</span></a></li>
-                                <li><a href="/checkedout/accesspoints"><i class="fas fa-wifi"></i> <span>&nbsp; Access Points</span></a></li>
-                                <li><a href="/checkedout/routers"><i class="fas fa-ethernet"></i> <span>&nbsp; Routers</span></a></li>
-                                <li><a href="/checkedout/switches"><i class="fas fa-network-wired"></i> <span>&nbsp; Switches</span></a></li>
-                                <li><a href="/checkedout/asas"><i class="fas fa-user-shield"></i> <span>&nbsp; ASAs</span></a></li>
-                                <li><a href="/checkedout/paloaltos"><i class="fas fa-user-shield"></i> <span>&nbsp; Palo Altos</span></a></li>
-                                <li><a href="/checkedout/junipers"><i class="fas fa-user-shield"></i> <span>&nbsp; Junipers</span></a></li>
-                                <li><a href="/checkedout/wifiadapter"><i class="fas fa-wifi"></i> <span>&nbsp; Wifi Adapters</span></a></li>
-                                <li><a href="/checkedout/ssd"><i class="fas fa-hdd"></i> <span>&nbsp; SSDs</span></a></li>
-                            </ul>
-                        </li> 
+                        <li><a href="/users"><i class="fa fa-users"></i> <span>Users</span></a></li> 
                     </ul>
                     
                 </div><!-- leftpanel -->
@@ -185,7 +184,7 @@
                                 <tbody>
                                     {% for inventory in inventory %}
                                     <tr>                         
-                                        <td>{{inventory.company_id}}</td>                                       
+                                        <td>{{inventory.inventory_id}}</td>                                       
                                         <td>{{inventory.manufacturer}}</td>
                                         <td>{{inventory.model}}</td>
                                         <td>{{inventory.speed}}</td>
@@ -202,7 +201,7 @@
                                 <tbody>
                                     {% for inventory in inventory %}
                                     <tr>                         
-                                        <td>{{inventory.company_id}}</td>                                       
+                                        <td>{{inventory.inventory_id}}</td>                                       
                                         <td>{{inventory.product.manufacturer}}</td>
                                         <td>{{inventory.product.model}}</td>
                                         <td>{{inventory.status}}</td>
@@ -216,7 +215,7 @@
                                 <tbody>
                                     {% for inventory in inventory %}
                                     <tr>                         
-                                        <td>{{inventory.company_id}}</td>                                       
+                                        <td>{{inventory.inventory_id}}</td>                                       
                                         <td>{{inventory.product.manufacturer}}</td>
                                         <td>{{inventory.product.model}}</td>
                                         <td>{{inventory.status}}</td>
@@ -229,7 +228,7 @@
                                 <tbody>
                                     {% for inventory in inventory %}
                                     <tr>                         
-                                        <td>{{inventory.company_id}}</td>                                       
+                                        <td>{{inventory.inventory_id}}</td>                                       
                                         <td>{{inventory.product.manufacturer}}</td>
                                         <td>{{inventory.product.model}}</td>
                                         <td>{{inventory.speed}}</td>
@@ -247,7 +246,7 @@
                                 <tbody>
                                     {% for inventory in inventory %}
                                     <tr>                         
-                                        <td>{{inventory.company_id}}</td>                                       
+                                        <td>{{inventory.inventory_id}}</td>                                       
                                         <td>{{inventory.product.manufacturer}}</td>
                                         <td>{{inventory.product.model}}</td>
                                         <td>{{inventory.speed}}</td>
@@ -262,7 +261,7 @@
                                 <tbody>
                                     {% for inventory in inventory %}
                                     <tr>                         
-                                        <td>{{inventory.company_id}}</td>                                       
+                                        <td>{{inventory.inventory_id}}</td>                                       
                                         <td>{{inventory.product.manufacturer}}</td>
                                         <td>{{inventory.product.model}}</td>
                                         <td>{{inventory.size}}</td>
@@ -276,24 +275,179 @@
                                 {% endif %}
 
                             </table>
+                            <hr>
+                            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" id="modal" style="z-index: 1400;">
+                                <div class="modal-dialog modal-sm">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
+                                          <h4 class="modal-title">Adding New {{title}}</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                      </div>
+                                  </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#test1">Add New {{title}}</button>
+
+
+
+                            <div id="test1" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" style="z-index: 1400;">
+                            <div class="modal-dialog modal-sm">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
+                                        <h4 class="modal-title">Adding New {{title}}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="POST" id="post-form">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Inventory ID</label>
+                                                <input type="text" class="form-control" id="inventory_id" placeholder="Inventory ID">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Product</label>
+                                                <select name="product">
+                                                    <option value="null">Select Product</option>
+                                                    {% for product in product %}
+                                                    <option value="test">{{product.manufacturer}} {{product.model}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#test2">+</button>
+                                            </div>                                             
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Location</label>
+                                                <select name="location" class="posts">
+                                                    <option value="null">Select Location</option>
+                                                    {% for location in location %}
+                                                    <option value={{location.location}}>{{location.location}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <button type="button" class="btn btn-dark btn-sm" data-toggle="modal" data-target="#test3">+</button>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Size (GB)</label>
+                                                <input type="text" class="form-control" id="size" placeholder="Size">
+                                            </div> 
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Speed</label>
+                                                <select name="speed">
+                                                    <option value="null">Select Speed</option>
+                                                    <option value="10mb">10 MB</option>
+                                                    <option value="100mb">100 MB</option>
+                                                    <option value="1000mb">1000 MB</option>
+                                                    <option value="10000mb">10000 MB</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Ports</label>
+                                                <input type="text" class="form-control" id="ports" placeholder="Ports">
+                                            </div> 
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">POE</label>
+                                                <input type="checkbox" value="true">                                            
+                                            </div> 
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Rack Units</label>
+                                                <select name="status">
+                                                    <option value="null">Select Rack Units</option>
+                                                    <option value="1u">1U</option>
+                                                    <option value="2u">2U</option>
+                                                    <option value="4u">4U</option>
+                                                </select>
+                                            </div> 
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Status</label>
+                                                <select name="status">
+                                                    <option value="null">Select Status</option>
+                                                    <option value="active">Active</option>
+                                                    <option value="stored">Stored</option>
+                                                    <option value="checkedout">Checked Out</option>
+                                                </select>
+                                            </div> 
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Serial Number</label>
+                                                <input type="text" class="form-control" id="serial_number" placeholder="Serial Number">
+                                            </div>                                            
+                                            <button type="submit" class="btn btn-primary">Add {{title}}</button>
+
+                                        
+                                        </form>
+                                        
+                                        
+                                    </div>      
+                                </div>
+                            </div>
+                            </div>
+
+                            <div id="test2" class="modal fade bs-example-modal-sm" role="dialog" style="z-index: 1600;">
+                            <div class="modal-dialog modal-sm">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
+                                        <h4 class="modal-title">Adding New Product</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="POST" id="prod-form">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Manufacturer</label>
+                                                <input type="text" class="form-control" id="manufactuer" placeholder="Manufacturer">
+                                            </div>       
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Model</label>
+                                                <input type="text" class="form-control" id="model" placeholder="Model">
+                                            </div>  
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Price</label>
+                                                <input type="text" class="form-control" id="price" placeholder="Price">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Add Product</button>  
+                                        </form>                                                                       
+                                    </div>      
+                                </div>
+                            </div>
+                            </div>
+                            <div id="test3" class="modal fade bs-example-modal-sm" role="dialog" style="z-index: 1600;">
+                                <div class="modal-dialog modal-sm">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
+                                            <h4 class="modal-title">Adding New Location</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="POST" id="loc-form">
+                                                {% csrf_token %}
+                                                <div class="form-group">
+                                                <label for="exampleInputEmail1">Location</label>
+                                                <input type="text" class="form-control" id="location" placeholder="Location">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form> 
+                                        </div>      
+                                    </div>
+                                </div>
+                            </div>
                         </div><!-- panel -->
-                       
                     </div><!-- contentpanel -->
                 </div><!-- mainpanel -->
             </div><!-- mainwrapper -->
         </section>
 
-        <script src="{% static 'main/js/jquery-1.11.1.min.js' %}"></script>
-        <script src="{% static 'main/js/jquery-migrate-1.2.1.min.js' %}"></script>
-        <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
         <script src="{% static 'main/js/modernizr.min.js' %}"></script>
         <script src="{% static 'main/js/pace.min.js' %}"></script>
         <script src="{% static 'main/js/retina.min.js' %}"></script>
         <script src="{% static 'main/js/jquery.cookies.js' %}"></script>
-        
 
-        
- 
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>        
+
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs-3.3.7/jq-3.3.1/jszip-2.5.0/dt-1.10.18/b-1.5.6/b-flash-1.5.6/b-html5-1.5.6/b-print-1.5.6/datatables.min.js"></script>
@@ -339,5 +493,31 @@
             }
         </script>
 
+        <script>
+            $(document).on('submit', '#loc-form',function(e){
+                e.preventDefault();
+                $.ajax({
+                    type:'POST',
+                    url:'{% url "inventory" id %}',
+                    data:{
+                        location:$('#location').val(),
+                        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                        action: 'post'
+                    },
+                    success:function(json){
+                        document.getElementById("loc-form").reset();
+                        $(".posts").append(
+                            '<option value={{location.location}}>' + json.location + '</option>'  
+                        )
+                        $('#test3').modal('hide')
+                    },
+                    error : function(xhr,errmsg,err) {
+                    $('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+                        " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+                    console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+                }
+                });
+            });
+        </script>
     </body>
 </html>

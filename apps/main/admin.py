@@ -1,25 +1,16 @@
 from django.contrib import admin
-from .models import locations, students, laptops, desktops, servers, accesspoints, switches, routers, asas, paloaltos, junipers, wirelessadapters, ssd, product
+from .models import Product, Location, userdepartment, usersub, active_header, Post
 import data_wizard
 
 # Register your models here.
-admin.site.register(laptops)
-admin.site.register(desktops)
-admin.site.register(servers)
-admin.site.register(accesspoints)
-admin.site.register(switches)
-admin.site.register(routers)
-admin.site.register(asas)
-admin.site.register(paloaltos)
-admin.site.register(junipers)
-admin.site.register(wirelessadapters)
-admin.site.register(ssd)
+admin.site.register(Product)
+admin.site.register(Location)
+admin.site.register(userdepartment)
+admin.site.register(usersub)
+admin.site.register(active_header)
 
+admin.site.register(Post)
 
-
-
-admin.site.register(locations)
-admin.site.register(students)
-admin.site.register(product)
-
-data_wizard.register(students)
+# data_wizard.register(locations)
+# data_wizard.register(users)
+# data_wizard.register(product)
